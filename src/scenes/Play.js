@@ -5,12 +5,14 @@ class Play extends Phaser.Scene {
     preload() {
         this.load.image('rocket', './assets/donut.png');
         this.load.image('spaceship', './assets/cats.png');
-        this.load.image('starfield', './assets/background.png');
+        this.load.image('clouds', './assets/clouds.png');
+        this.load.image('conveyer_belt', './assets/conveyer_belt.png');
+        this.load.image('frame', './assets/frame.png');
         this.load.spritesheet('explosion', './assets/chomp.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 13});
     }
     create() {
-        this.sound.play('background_music');
-        this.starfield = this.add.tileSprite(0,0, 640, 480, 'starfield').setOrigin(0,0);
+        this.clouds = this.add.tileSprite(0,0, 640, 480, 'clouds').setOrigin(0,0);
+        this.belt = this.add.tileSprite(0,0, 640, 480, 'conveyer_belt').setOrigin(0,0);
         //this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize *2, 0x00FF00).setOrigin(0,0);
         //this.add.rectangle(0, 0, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0,0);
         //this.add.rectangle(0, game.config.height - borderUISize, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0,0);
@@ -55,6 +57,8 @@ class Play extends Phaser.Scene {
             this.add.text(game.config.width/2, game.config.height/2 +64, 'Press (R) to Restart or ← for Menu', scoreConfig).setOrigin(0.5);
             this.gameOver = true;
         }, null, this);
+
+        this.frame = this.add.tileSprite(0,0, 640, 480, 'frame').setOrigin(0,0);
     }
     update() {
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
@@ -64,7 +68,8 @@ class Play extends Phaser.Scene {
             this.scene.start("menuScene");
         }
         if (!this.gameOver) {
-            this.starfield.tilePositionX += 4;
+            this.clouds.tilePositionX += 0.5;
+            this.belt.tilePositionX += 4;
             this.p1Rocket.update();
             this.ship01.update();
             this.ship02.update();

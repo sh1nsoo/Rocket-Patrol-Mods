@@ -32,8 +32,8 @@ class Menu extends Phaser.Scene {
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
 
-        var bgmusic = this.sound.play('background_music');
-        bgmusic.play();
+        //var bgmusic = this.sound.play('background_music');
+        //bgmusic.play();
     }
 
     update() {
@@ -44,7 +44,7 @@ class Menu extends Phaser.Scene {
             }
             this.sound.play('sfx_select');
             this.scene.start('playScene');
-            bgmusic.stop();
+            //bgmusic.stop();
         }
         if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
             game.settings = {
