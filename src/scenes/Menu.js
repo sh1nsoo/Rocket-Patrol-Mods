@@ -8,12 +8,14 @@ class Menu extends Phaser.Scene {
         this.load.audio('sfx_explosion', './assets/meow.wav');
         this.load.audio('sfx_rocket', './assets/bloop.wav');
         this.load.audio('background_music', './assets/backgroundmusic.mp3');
+        this.load.image('menu', './assets/menu.png');
     }
     create() {
+        this.menu = this.add.tileSprite(0,0, 640, 480, 'menu').setOrigin(0,0);
         let menuConfig = {
             fontFamily: 'Courier',
-            fontSize: '28px',
-            backgroundColor: "#FFC4BD",
+            fontSize: '20px',
+            //backgroundColor: "#FFC4BD",
             color: '#843605',
             align: 'right',
             padding: {
@@ -23,11 +25,11 @@ class Menu extends Phaser.Scene {
             fixedWidth: 0
         }
 
-        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'Donut Kitty Blast', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2, 'Use ←→ arrows to move & (F) to shoot', menuConfig).setOrigin(0.5);
+        //this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'Donut Kitty Blast', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/1.3, 'Use ←→ arrows to move & (F) to shoot', menuConfig).setOrigin(0.5);
         menuConfig.backgroundColor = '#FFC4BD';
         menuConfig.color = '#000';
-        this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press ← for Novice or → for Expert', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/1.35 + borderUISize + borderPadding, 'Press ← for Novice or → for Expert', menuConfig).setOrigin(0.5);
 
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
