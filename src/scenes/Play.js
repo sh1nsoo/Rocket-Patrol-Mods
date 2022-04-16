@@ -36,6 +36,8 @@ class Play extends Phaser.Scene {
             frameRate: 20
         })
 
+        this.frame = this.add.tileSprite(0,0, 640, 480, 'frame').setOrigin(0,0);
+
         this.p1Score = 0;
         let scoreConfig = {
             fontFamily: "Courier",
@@ -58,9 +60,14 @@ class Play extends Phaser.Scene {
             this.gameOver = true;
         }, null, this);
 
-        this.frame = this.add.tileSprite(0,0, 640, 480, 'frame').setOrigin(0,0);
+        this.bgmusic = this.sound.add('background_music');
+        this.bgmusic.play();
+        this.bgmusic.loop = true;
     }
     update() {
+        if (this.gameOver) {
+            this.bgmusic.stop();
+        }
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
             this.scene.restart();
         }
