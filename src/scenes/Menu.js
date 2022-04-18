@@ -46,7 +46,7 @@ class Menu extends Phaser.Scene {
                 gameTimer: 60000,
                 mode: false
             }
-            this.sound.play('sfx_select');
+            this.sound.play('sfx_explosion');
             this.scene.start('playScene');
             //bgmusic.stop();
         }
@@ -56,7 +56,7 @@ class Menu extends Phaser.Scene {
                 gameTimer: 45000,
                 mode: false
             }
-            this.sound.play('sfx_select');
+            this.sound.play('sfx_explosion');
             this.scene.start('playScene');
         }
 
@@ -66,7 +66,7 @@ class Menu extends Phaser.Scene {
                 gameTimer: 50000,
                 mode: true
             }
-            this.sound.play('sfx_select');
+            this.sound.play('sfx_explosion');
             this.scene.start('playScene');
         }
     }

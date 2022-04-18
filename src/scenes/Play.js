@@ -18,7 +18,7 @@ class Play extends Phaser.Scene {
         //this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
         if (game.settings.mode == true) {
             this.p1Rocket = new Rocket(this, game.config.width/3, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
-            this.p2Rocket = new Rocket(this, (game.config.width/3) *2, game.config.height - borderUISize - borderPadding, 'rocket2').setOrigin(0.5, 0);
+            this.p2Rocket = new Rocket2(this, (game.config.width/3) *2, game.config.height - borderUISize - borderPadding, 'rocket2').setOrigin(0.5, 0);
             
         } else {
             this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
@@ -32,6 +32,7 @@ class Play extends Phaser.Scene {
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
         keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Down);
+        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
 
         this.anims.create({
             key: 'explode',
