@@ -13,7 +13,7 @@ class Menu extends Phaser.Scene {
     create() {
         this.menu = this.add.tileSprite(0,0, 640, 480, 'menu').setOrigin(0,0);
         let menuConfig = {
-            fontFamily: 'Courier',
+            fontFamily: 'Comic Sans MS',
             fontSize: '20px',
             //backgroundColor: "#FFC4BD",
             color: '#843605',
@@ -26,10 +26,10 @@ class Menu extends Phaser.Scene {
         }
 
         //this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'Donut Kitty Blast', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/1.3, 'Use ←→ arrows to move & (F) to shoot', menuConfig).setOrigin(0.5);
-        menuConfig.backgroundColor = '#FFC4BD';
-        menuConfig.color = '#000';
-        this.add.text(game.config.width/2, game.config.height/1.35 + borderUISize + borderPadding, 'Press ← for Novice or → for Expert', menuConfig).setOrigin(0.5);
+        //this.add.text(game.config.width/2, game.config.height/1.3, 'Use ←→ arrows to move & (F) to shoot', menuConfig).setOrigin(0.5);
+        //menuConfig.backgroundColor = '#FFC4BD';
+        //menuConfig.color = '#000';
+        //this.add.text(game.config.width/2, game.config.height/1.35 + borderUISize + borderPadding, 'Press ← for Novice or → for Expert', menuConfig).setOrigin(0.5);
 
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);

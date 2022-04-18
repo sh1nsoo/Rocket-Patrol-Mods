@@ -10,6 +10,8 @@ class Play extends Phaser.Scene {
         this.load.image('conveyer_belt', './assets/conveyer_belt.png');
         this.load.image('P1frame', './assets/P1frame.png');
         this.load.image('P2frame', './assets/P2frame.png');
+        this.load.image('control1', './assets/control1.png');
+        this.load.image('control2', './assets/control2.png');
         this.load.spritesheet('explosion', './assets/chomp.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 13});
     }
     create() {
@@ -47,37 +49,40 @@ class Play extends Phaser.Scene {
         this.P1frame = this.add.tileSprite(0,0, 640, 480, 'P1frame').setOrigin(0,0);
         if (game.settings.mode == true){
             this.P2Frame = this.add.tileSprite(0,0,640,480, 'P2frame').setOrigin(0,0);
+            this.control2 = this.add.tileSprite(0,0,640, 480, 'control2').setOrigin(0,0);
+        } else {
+            this.control1 = this.add.tileSprite(0,0,640, 480, 'control1').setOrigin(0,0);
         }
 
 
         this.p1Score = 0;
         this.p2Score = 0;
         let scoreConfig = {
-            fontFamily: "Courier",
-            fontSize: '25px',
+            fontFamily: "Comic Sans MS",
+            fontSize: '22px',
             backgroundColor: "transparent",
             color: '#843605',
             align: 'right',
             padding: {
-                top: 12,
+                top: 10,
                 bottom: 0,
             },
             fixedWidth: 100
         }
         if (game.settings.mode == true) {
             let scoreConfig2 = {
-                fontFamily: "Courier",
-                fontSize: '25px',
+                fontFamily: "Comic Sans MS",
+                fontSize: '22px',
                 backgroundColor: "transparent",
                 color: '#843605',
                 align: 'left',
                 padding: {
-                    top: 12,
-                    bottom:0,
+                    top: 10,
+                    bottom:10,
                 },
                 fixedWidth: 50
             }
-            this.scoreRight = this.add.text((game.config.width * (3/4)) + 15 , borderUISize + borderPadding*2, this.p2Score, scoreConfig2);
+            this.scoreRight = this.add.text((game.config.width * (3/4)) + 18 , borderUISize + borderPadding*2, this.p2Score, scoreConfig2);
         }
         this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
         this.gameOver = false;
