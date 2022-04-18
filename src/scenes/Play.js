@@ -4,6 +4,7 @@ class Play extends Phaser.Scene {
     }
     preload() {
         this.load.image('rocket', './assets/donut.png');
+        this.load.image('rocket2', './assets/chocdonut.png');
         this.load.image('spaceship', './assets/cats.png');
         this.load.image('clouds', './assets/clouds.png');
         this.load.image('conveyer_belt', './assets/conveyer_belt.png');
@@ -19,9 +20,13 @@ class Play extends Phaser.Scene {
         //this.add.rectangle(0,0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0,0);
         //this.add.rectangle(game.config.width - borderUISize, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0,0);
 
-        this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
+        //this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
         if (game.settings.mode == true) {
-            this.p2Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
+            this.p1Rocket = new Rocket(this, game.config.width/3, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
+            this.p2Rocket = new Rocket(this, (game.config.width/3) *2, game.config.height - borderUISize - borderPadding, 'rocket2').setOrigin(0.5, 0);
+            
+        } else {
+            this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
         }
         this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*3.5, 'spaceship', 0, 30).setOrigin(0,0);
         this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*4.75 + borderPadding*2, 'spaceship', 0, 20).setOrigin(0,0);
@@ -42,17 +47,33 @@ class Play extends Phaser.Scene {
         this.frame = this.add.tileSprite(0,0, 640, 480, 'frame').setOrigin(0,0);
 
         this.p1Score = 0;
+        this.p2Score = 0;
         let scoreConfig = {
             fontFamily: "Courier",
             fontSize: '28px',
-            backgroundColor: '#F3B141',
+            backgroundColor: "red",
             color: '#843605',
             align: 'right',
             padding: {
-                top: 5,
+                top: 10,
                 bottom: 5,
             },
             fixedWidth: 100
+        }
+        if (game.settings.mode == true) {
+            let scoreConfig2 = {
+                fontFamily: "Courier",
+                fontSize: '28px',
+                backgroundColor: "blue",
+                color: '#843605',
+                align: 'left',
+                padding: {
+                    top: 5,
+                    bottom: 5,
+                },
+                fixedWidth: 100
+            }
+            this.scoreRight = this.add.text((game.config.width * (3/4)) + 15 , borderUISize + borderPadding*2, this.p2Score, scoreConfig2);
         }
         this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
         this.gameOver = false;
