@@ -8,7 +8,8 @@ class Play extends Phaser.Scene {
         this.load.image('spaceship', './assets/cats.png');
         this.load.image('clouds', './assets/clouds.png');
         this.load.image('conveyer_belt', './assets/conveyer_belt.png');
-        this.load.image('frame', './assets/frame.png');
+        this.load.image('P1frame', './assets/P1frame.png');
+        this.load.image('P2frame', './assets/P2frame.png');
         this.load.spritesheet('explosion', './assets/chomp.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 13});
     }
     create() {
@@ -43,34 +44,38 @@ class Play extends Phaser.Scene {
             frameRate: 20
         })
 
-        this.frame = this.add.tileSprite(0,0, 640, 480, 'frame').setOrigin(0,0);
+        this.P1frame = this.add.tileSprite(0,0, 640, 480, 'P1frame').setOrigin(0,0);
+        if (game.settings.mode == true){
+            this.P2Frame = this.add.tileSprite(0,0,640,480, 'P2frame').setOrigin(0,0);
+        }
+
 
         this.p1Score = 0;
         this.p2Score = 0;
         let scoreConfig = {
             fontFamily: "Courier",
-            fontSize: '28px',
-            backgroundColor: "red",
+            fontSize: '25px',
+            backgroundColor: "transparent",
             color: '#843605',
             align: 'right',
             padding: {
-                top: 10,
-                bottom: 5,
+                top: 12,
+                bottom: 0,
             },
             fixedWidth: 100
         }
         if (game.settings.mode == true) {
             let scoreConfig2 = {
                 fontFamily: "Courier",
-                fontSize: '28px',
-                backgroundColor: "blue",
+                fontSize: '25px',
+                backgroundColor: "transparent",
                 color: '#843605',
                 align: 'left',
                 padding: {
-                    top: 5,
-                    bottom: 5,
+                    top: 12,
+                    bottom:0,
                 },
-                fixedWidth: 100
+                fixedWidth: 50
             }
             this.scoreRight = this.add.text((game.config.width * (3/4)) + 15 , borderUISize + borderPadding*2, this.p2Score, scoreConfig2);
         }
