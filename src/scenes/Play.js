@@ -12,6 +12,7 @@ class Play extends Phaser.Scene {
         this.load.image('P2frame', './assets/P2frame.png');
         this.load.image('control1', './assets/control1.png');
         this.load.image('control2', './assets/control2.png');
+        this.load.image('gameover', './assets/gameover.png')
         this.load.spritesheet('explosion', './assets/chomp.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 13});
     }
     create() {
@@ -88,8 +89,9 @@ class Play extends Phaser.Scene {
         this.gameOver = false;
         scoreConfig.fixedWidth = 0;
         this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
-            this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
-            this.add.text(game.config.width/2, game.config.height/2 +64, 'Press (R) to Restart or ← for Menu', scoreConfig).setOrigin(0.5);
+            this.gameover = this.add.tileSprite(0,0,640, 480, 'gameover').setOrigin(0,0);
+            //this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
+            //this.add.text(game.config.width/2, game.config.height/2 +64, 'Press (R) to Restart or ← for Menu', scoreConfig).setOrigin(0.5);
             this.gameOver = true;
         }, null, this);
 
